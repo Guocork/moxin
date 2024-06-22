@@ -1,5 +1,6 @@
 use makepad_widgets::*;
 use moxin_protocol::data::DownloadedFile;
+use rfd::FileDialog;
 
 use crate::{data::store::Store, shared::utils::BYTES_PER_MB};
 
@@ -217,7 +218,12 @@ fn file_manager_label() -> String {
 impl WidgetMatchEvent for MyModelsScreen {
     fn handle_actions(&mut self, cx: &mut Cx, actions: &Actions, scope: &mut Scope) {
         if self.button(id!(show_in_files)).clicked(actions) {
-            let models_dir = &scope.data.get::<Store>().unwrap().preferences.downloaded_files_dir;
+            let models_dir = &scope
+                .data
+                .get::<Store>()
+                .unwrap()
+                .preferences
+                .downloaded_files_dir;
             let models_uri = &format!("file:///{}", models_dir.display());
             robius_open::Uri::new(models_uri)
                 .open()
@@ -227,6 +233,13 @@ impl WidgetMatchEvent for MyModelsScreen {
                         models_uri
                     );
                 });
+        }
+
+        if self.button(id!(DownloadLocationButton)).clicked(actions) {
+            if let Some(path) = FileDialog::new().pick_folder() {
+                let store = &scope.data.get_mut::<Store>().unwrap();
+                store.preferences.set_downloaded_files_dir(path);
+            }
         }
 
         if let Some(keywords) = self.text_input(id!(search.input)).changed(actions) {
