@@ -20,7 +20,9 @@ impl Preferences {
         match read_from_file(preferences_path()) {
             Ok(json) => {
                 let mut preferences: Preferences = serde_json::from_str(&json).unwrap();
-                preferences.downloaded_files_dir = setup_model_downloads_folder();
+                if preferences.downloaded_files_dir.to_string_lossy().is_empty() {
+                    preferences.downloaded_files_dir = setup_model_downloads_folder();
+                }
                 return preferences;
             }
             Err(_) => {}
