@@ -237,9 +237,9 @@ impl WidgetMatchEvent for MyModelsScreen {
 
         if self.button(id!(DownloadLocationButton)).clicked(actions) {
             if let Some(path) = FileDialog::new().pick_folder() {
-                let store = &scope.data.get_mut::<Store>().unwrap();
+                let mut store = scope.data.get_mut::<Store>().unwrap();
                 store.preferences.set_downloaded_files_dir(path);
-            }
+            }  
         }
 
         if let Some(keywords) = self.text_input(id!(search.input)).changed(actions) {
