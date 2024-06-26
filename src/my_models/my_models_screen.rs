@@ -40,7 +40,6 @@ live_design! {
             color: #000
         }
         text: "Change Download Location"
-        enabled: false
     }
 
     ShowInFilesButton = <MoxinButton> {
@@ -160,7 +159,7 @@ live_design! {
                 margin: {top: 10}
                 align: {x: 0.0, y: 0.5}
 
-                <DownloadLocationButton> {}
+                Change_Download_Location = <DownloadLocationButton> {}
                 show_in_files = <ShowInFilesButton> {}
                 <View> { width: Fill, height: Fit }
                 search = <SearchBar> {}
@@ -235,7 +234,7 @@ impl WidgetMatchEvent for MyModelsScreen {
                 });
         }
 
-        if self.button(id!(DownloadLocationButton)).clicked(actions) {
+        if self.button(id!(Change_Download_Location)).clicked(actions) {
             if let Some(path) = FileDialog::new().pick_folder() {
                 let mut store = scope.data.get_mut::<Store>().unwrap();
                 store.preferences.set_downloaded_files_dir(path);
