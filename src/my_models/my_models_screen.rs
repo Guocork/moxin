@@ -238,23 +238,14 @@ impl WidgetMatchEvent for MyModelsScreen {
         if self.button(id!(Change_Download_Location)).clicked(actions) {
             if let Some(new_path) = FileDialog::new().pick_folder() {
                 let mut store = scope.data.get_mut::<Store>().unwrap();
-
                 let mut paused_downloads = Vec::new();
-
                 for (file_id, download) in store.downloads.current_downloads.iter() {
                     paused_downloads.push(file_id.clone());
                 }
-
                 for file_id in &paused_downloads {
                     store.downloads.pause_download_file(file_id.clone());
                 }
-
                 let old_path = store.preferences.downloaded_files_dir.clone();
-
-                fs::create_dir_all(&new_path).unwrap_or_else(|err| {
-                    eprintln!("Error creating new download directory: {:?}", err);
-                });
-
                 if let Err(err) = fs::read_dir(&old_path).map(|entries| {
                     for entry in entries {
                         let entry = entry.expect("Failed to read directory entry");
@@ -267,9 +258,7 @@ impl WidgetMatchEvent for MyModelsScreen {
                 }) {
                     eprintln!("Error moving files to new download directory: {:?}", err);
                 }
-
                 store.preferences.set_downloaded_files_dir(new_path);
-
                 for file_id in paused_downloads {
                     let (model, file) = store.downloads.get_model_and_file_for_pending_download(&file_id).unwrap();
                     store.downloads.download_file(model, file);
