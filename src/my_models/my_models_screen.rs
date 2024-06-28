@@ -1,6 +1,7 @@
 use makepad_widgets::*;
 use moxin_protocol::data::DownloadedFile;
 use rfd::FileDialog;
+use std::fs;
 
 use crate::{data::store::Store, shared::utils::BYTES_PER_MB};
 
@@ -238,15 +239,21 @@ impl WidgetMatchEvent for MyModelsScreen {
             if let Some(new_path) = FileDialog::new().pick_folder() {
                 let mut store = scope.data.get_mut::<Store>().unwrap();
 
-                let downloads = &mut store.downloads;
-
                 let mut paused_downloads = Vec::new();
-                for (file_id, download) in &downloads.current_downloads {
-                    downloads.pause_download_file(file_id.clone());
-                    paused_downloads.push(download.file.clone());
+
+                for (file_id, download) in store.downloads.current_downloads.iter() {
+                    paused_downloads.push(file_id.clone());
+                }
+
+                for file_id in &paused_downloads {
+                    store.downloads.pause_download_file(file_id.clone());
                 }
 
                 let old_path = store.preferences.downloaded_files_dir.clone();
+
+                fs::create_dir_all(&new_path).unwrap_or_else(|err| {
+                    eprintln!("Error creating new download directory: {:?}", err);
+                });
 
                 if let Err(err) = fs::read_dir(&old_path).map(|entries| {
                     for entry in entries {
@@ -264,9 +271,9 @@ impl WidgetMatchEvent for MyModelsScreen {
 
                 store.preferences.set_downloaded_files_dir(new_path);
 
-                for file in paused_downloads {
-                    let model = downloads.get_model_and_file_for_pending_download(&file.id).unwrap().0;
-                    downloads.download_file(model, file);
+                for file_id in paused_downloads {
+                    let (model, file) = store.downloads.get_model_and_file_for_pending_download(&file_id).unwrap();
+                    store.downloads.download_file(model, file);
                 }
             }
         }
