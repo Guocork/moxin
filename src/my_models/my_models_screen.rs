@@ -260,7 +260,6 @@ impl WidgetMatchEvent for MyModelsScreen {
                         let entry = entry.expect("Failed to read directory entry");
                         let from_path = entry.path();
                         let to_path = new_path.join(&entry.file_name());
-                        // 确保目标路径是文件而不是目录，并且进行文件移动
                         if from_path.is_file() {
                             fs::rename(from_path, to_path).expect("Failed to move file");
                         }
