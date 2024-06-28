@@ -235,10 +235,40 @@ impl WidgetMatchEvent for MyModelsScreen {
         }
 
         if self.button(id!(Change_Download_Location)).clicked(actions) {
-            if let Some(path) = FileDialog::new().pick_folder() {
+            if let Some(new_path) = FileDialog::new().pick_folder() {
                 let mut store = scope.data.get_mut::<Store>().unwrap();
-                store.preferences.set_downloaded_files_dir(path);
-            }  
+
+                let downloads = &mut store.downloads;
+
+                let mut paused_downloads = Vec::new();
+                for (file_id, download) in &downloads.current_downloads {
+                    downloads.pause_download_file(file_id.clone());
+                    paused_downloads.push(download.file.clone());
+                }
+
+                let old_path = store.preferences.downloaded_files_dir.clone();
+
+                if let Err(err) = fs::read_dir(&old_path).map(|entries| {
+                    for entry in entries {
+                        let entry = entry.expect("Failed to read directory entry");
+                        let from_path = entry.path();
+                        let to_path = new_path.join(&entry.file_name());
+                        // 确保目标路径是文件而不是目录，并且进行文件移动
+                        if from_path.is_file() {
+                            fs::rename(from_path, to_path).expect("Failed to move file");
+                        }
+                    }
+                }) {
+                    eprintln!("Error moving files to new download directory: {:?}", err);
+                }
+
+                store.preferences.set_downloaded_files_dir(new_path);
+
+                for file in paused_downloads {
+                    let model = downloads.get_model_and_file_for_pending_download(&file.id).unwrap().0;
+                    downloads.download_file(model, file);
+                }
+            }
         }
 
         if let Some(keywords) = self.text_input(id!(search.input)).changed(actions) {
