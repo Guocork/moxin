@@ -122,6 +122,10 @@ impl ModelSelectorList {
             .get_current_chat()
             .and_then(|c| c.borrow().associated_entity.clone());
 
+        if let Some(bot_repo) = store.bot_repo.as_ref() {
+            // println!("We have the following bots in bot repo: {:?}", bot_repo.bots());
+        }
+
         // Get non-agent models
         let non_agent_models = store.chats.get_non_mofa_models_list(true);
 

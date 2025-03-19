@@ -113,6 +113,8 @@ impl Chats {
         self.saved_chats.iter().find(|c| c.borrow().id == chat_id)
     }
 
+    // TODO(Julian): use whatever this is doing here to determine which one is the current chat and load its messages
+    // into MolyKit's Chat widget in ChatScreen
     pub fn set_current_chat(&mut self, chat_id: Option<ChatID>) {
         self.cancel_chat_streaming();
         self.current_chat_id = chat_id;

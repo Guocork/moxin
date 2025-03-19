@@ -202,6 +202,9 @@ pub struct ModelSelector {
 
     #[rust]
     options_list_height: Option<f64>,
+
+    #[rust]
+    currently_selected_model: Option<ChatEntityId>,
 }
 
 impl Widget for ModelSelector {
@@ -277,7 +280,7 @@ impl Widget for ModelSelector {
 
         self.update_loading_model_state(cx, store);
 
-        if no_active_model(store) {
+        if self.currently_selected_model.is_none() {
             self.view(id!(choose)).set_visible(cx, true);
             self.view(id!(selected_agent)).set_visible(cx, false);
             self.view(id!(selected_model)).set_visible(cx, false);
@@ -331,12 +334,26 @@ impl WidgetMatchEvent for ModelSelector {
             }
         }
 
+        let mut should_hide_options = false;
         for action in actions {
             match action.cast() {
-                ModelSelectorAction::ModelSelected(_) | ModelSelectorAction::AgentSelected(_) | ModelSelectorAction::RemoteModelSelected(_) => {
-                    self.hide_options(cx);
+                ModelSelectorAction::AgentSelected(agent) => {
+                    self.currently_selected_model = Some(ChatEntityId::Agent(agent.id));
+                    should_hide_options = true;
+                }
+                ModelSelectorAction::ModelSelected(m) => {
+                    self.currently_selected_model = Some(ChatEntityId::ModelFile(m.file.id));
+                    should_hide_options = true;
+                }
+                ModelSelectorAction::RemoteModelSelected(m) => {
+                    self.currently_selected_model = Some(ChatEntityId::RemoteModel(m.id));
+                    should_hide_options = true;
                 }
                 _ => {}
+            }
+
+            if should_hide_options {
+                self.hide_options(cx);
             }
 
             match action.cast() {
@@ -387,10 +404,7 @@ impl ModelSelector {
         let is_loading = store.chats.model_loader.is_loading();
         let loaded_file = store.chats.loaded_model.as_ref();
 
-        let chat_entity = store
-            .chats
-            .get_current_chat()
-            .and_then(|c| c.borrow().associated_entity.clone());
+        let chat_entity = self.currently_selected_model.clone();
 
         // Handle agent
         if let Some(ChatEntityId::Agent(model_id)) = chat_entity {
@@ -492,19 +506,5 @@ impl ModelSelector {
                 visible: true
             },
         );
-    }
-}
-
-fn no_active_model(store: &Store) -> bool {
-    let chat_entity = store
-        .chats
-        .get_current_chat()
-        .and_then(|c| c.borrow().associated_entity.clone());
-
-    match chat_entity {
-        None => store.chats.loaded_model.is_none(),
-        Some(ChatEntityId::ModelFile(_)) => false,
-        Some(ChatEntityId::Agent(_)) => false,
-        Some(ChatEntityId::RemoteModel(_)) => false,
     }
 }

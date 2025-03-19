@@ -26,16 +26,17 @@ impl MultiClient {
 impl BotClient for MultiClient {
     fn send_stream(
         &mut self,
-        bot: &BotId,
+        bot: &Bot,
         messages: &[Message],
     ) -> MolyStream<'static, Result<ChatDelta, ()>> {
+
         let mut client = self
             .clients_with_bots
             .lock()
             .unwrap()
             .iter()
             .find_map(|(client, bots)| {
-                if bots.iter().any(|b| b.id == *bot) {
+                if bots.iter().any(|b| b.id == bot.id) {
                     Some(client.clone())
                 } else {
                     None

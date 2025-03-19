@@ -203,6 +203,7 @@ impl WidgetMatchEvent for ChatHistory {
 
         if let Some(entity_button) = clicked_entity_button {
             let entity_id = entity_button.get_entity_id().unwrap().clone();
+            println!("dispatching ChatAction::Start with entity_id: {:?}", entity_id);
             cx.action(ChatAction::Start(entity_id));
         }
 
