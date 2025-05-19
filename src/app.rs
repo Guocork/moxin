@@ -35,7 +35,7 @@ live_design! {
 
     App = {{App}} {
         ui: <Window> {
-            window: {inner_size: vec2(1440, 1024)},
+            window: {inner_size: vec2(1440, 1024), title: "毕设"},
             pass: {clear_color: #fff}
 
             caption_bar = {
@@ -76,26 +76,26 @@ live_design! {
 
                         discover_tab = <SidebarMenuButton> {
                             animator: {selected = {default: on}}
-                            text: "Discover",
+                            text: "发现",
                             draw_icon: {
                                 svg_file: (ICON_DISCOVER),
                             }
                         }
                         chat_tab = <SidebarMenuButton> {
-                            text: "Chat",
+                            text: "聊天",
                             draw_icon: {
                                 svg_file: (ICON_CHAT),
                             }
                         }
                         my_models_tab = <SidebarMenuButton> {
-                            text: "My Models",
+                            text: "模型",
                             draw_icon: {
                                 svg_file: (ICON_MY_MODELS),
                             }
                         }
                         <HorizontalFiller> {}
                         settings_tab = <SidebarMenuButton> {
-                            text: "Settings",
+                            text: "设置",
                             draw_icon: {
                                 svg_file: (ICON_SETTINGS),
                             }

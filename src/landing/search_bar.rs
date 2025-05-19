@@ -55,7 +55,7 @@ live_design! {
                     text_style: <REGULAR_FONT>{font_size: 13},
                     color: #000
                 }
-                text: "Discover, download, and run local LLMs"
+                text: "发现，下载，本地运行模型"
             }
         }
 
@@ -93,7 +93,7 @@ live_design! {
             input = <MolyTextInput> {
                 width: Fill,
                 height: Fit,
-                empty_message: "Search Model by Keyword"
+                empty_message: "搜索模型"
             }
 
             clear_text_button = <MolyButton> {

@@ -34,7 +34,7 @@ live_design! {
                     text_style: <REGULAR_FONT>{font_size: 16},
                     color: #000
                 }
-                text: "Explore"
+                text: "探索"
             }
         }
 

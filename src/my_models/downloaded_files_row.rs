@@ -100,7 +100,7 @@ live_design! {
 
         start_chat_button = <DownloadedFilesRowButton> {
             width: 140
-            text: "Chat with Model",
+            text: "对话模型",
             draw_text: {
                 color: (MODEL_CTA_COLOR)
                 text_style: <REGULAR_FONT>{font_size: 9}

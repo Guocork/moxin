@@ -161,7 +161,7 @@ live_design! {
             width: Fit,
             height: Fit,
             view_in_my_models_link = <PopupActionLink> {
-                text: "View in My Models"
+                text: "查看模型"
             }
         }
 
@@ -171,11 +171,11 @@ live_design! {
             spacing: 10,
 
             retry_link = <PopupActionLink> {
-                text: "Retry"
+                text: "重试"
             }
 
             cancel_link = <PopupSecondaryActionLink> {
-                text: "Cancel"
+                text: "取消"
             }
         }
     }

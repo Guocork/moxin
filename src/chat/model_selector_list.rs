@@ -68,7 +68,7 @@ live_design! {
                     text_style: <REGULAR_FONT>{font_size: 11},
                     color: #000
                 }
-                text: "No models available. Download a model to get started."
+                text: "未发现模型，请先下载模型"
             }
         }
     }

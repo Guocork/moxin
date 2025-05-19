@@ -84,7 +84,7 @@ live_design! {
                 align: {x: 0.0, y: 0.6}
 
                 <Label> {
-                    text: "Read from"
+                    text: "读取"
                     draw_text: {
                         text_style: <REGULAR_FONT>{font_size: 10},
                         color: #344054
@@ -131,7 +131,7 @@ live_design! {
                             color: #EDFCF2,
                         }
 
-                        text: "Copy to Clipboard"
+                        text: "复制到剪切板"
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #x0
@@ -149,7 +149,7 @@ live_design! {
                             color: #F5FEFF,
                         }
 
-                        text: "Model Card on Hugging Face"
+                        text: "在Hugging Face上打开"
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #x0

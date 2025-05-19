@@ -50,7 +50,7 @@ live_design! {
 
     DownloadButton = <ModelCardButton> {
         draw_bg: { color: #099250, border_color: #099250 }
-        text: "Download"
+        text: "下载"
         draw_icon: {
             svg_file: (ICON_DOWNLOAD),
         }
@@ -58,7 +58,7 @@ live_design! {
 
     StartChatButton = <ModelCardButton> {
         draw_bg: { color: #fff, color_hover: #09925033, border_color: #d0d5dd }
-        text: "Chat with Model"
+        text: "对话"
         draw_text: {
             color: #087443;
         }

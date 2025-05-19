@@ -40,7 +40,7 @@ live_design! {
                     height: Fit,
 
                     <Label> {
-                        text: "Delete Chat"
+                        text: "删除聊天"
                         draw_text: {
                             text_style: <BOLD_FONT>{font_size: 13},
                             color: #000
@@ -102,7 +102,7 @@ live_design! {
                             color: #fff,
                         }
 
-                        text: "Cancel"
+                        text: "取消"
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #x0
@@ -119,7 +119,7 @@ live_design! {
                             color: #D92D20,
                         }
 
-                        text: "Delete"
+                        text: "删除"
                         draw_text:{
                             text_style: <REGULAR_FONT>{font_size: 10},
                             color: #fff

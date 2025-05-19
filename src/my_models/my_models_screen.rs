@@ -40,7 +40,7 @@ live_design! {
             text_style: <REGULAR_FONT>{font_size: 11},
             color: #000
         }
-        text: "Change Download Location"
+        text: "修改下载位置"
         enabled: true
     }
 
@@ -66,7 +66,7 @@ live_design! {
             text_style: <REGULAR_FONT>{font_size: 11},
             color: #000
         }
-        text: "Show in Folder"
+        text: "文件夹中查看"
     }
 
     SearchBar = <RoundedView> {
@@ -103,7 +103,7 @@ live_design! {
             width: 260,
             height: Fit,
 
-            empty_message: "Filter files"
+            empty_message: "过滤文件"
 
             draw_text: {
                 text_style:<REGULAR_FONT>{font_size: 11},
@@ -139,7 +139,7 @@ live_design! {
                         text_style: <BOLD_FONT>{font_size: 30}
                         color: #000
                     }
-                    text: "My Models"
+                    text: "我的模型"
                 }
 
                 models_summary = <Label> {

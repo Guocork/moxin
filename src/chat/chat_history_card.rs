@@ -58,7 +58,7 @@ live_design! {
     }
 
     SaveButton = <EditActionButton> {
-        text: "Save"
+        text: "保存"
     }
 
     CancelButton = <EditActionButton> {
@@ -70,7 +70,7 @@ live_design! {
                 return #000;
             }
         }
-        text: "Cancel"
+        text: "取消"
     }
 
     ChatHistoryCard = {{ChatHistoryCard}} {

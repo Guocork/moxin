@@ -39,7 +39,7 @@ live_design! {
                     text_style: <BOLD_FONT>{font_size: 30}
                     color: #000
                 }
-                text: "Settings"
+                text: "设置"
             }
 
             no_model = <View> {
@@ -50,7 +50,7 @@ live_design! {
                         text_style: <REGULAR_FONT>{font_size: 12}
                         color: #000
                     }
-                    text: "Local inference options will appear once you have a model loaded."
+                    text: "加载本地推理模型选项"
                 }
             }
             
@@ -69,7 +69,7 @@ live_design! {
                         text_style: <BOLD_FONT>{font_size: 16}
                         color: #000
                     }
-                    text: "Local inference server information"
+                    text: "本地推理信息"
                 }
 
                 <View> {
@@ -83,7 +83,7 @@ live_design! {
                             text_style: <REGULAR_FONT>{font_size: 12}
                             color: #000
                         }
-                        text: "Port number:"
+                        text: "端口号:"
                     }
 
                     on_edit = <View> {
@@ -142,7 +142,7 @@ live_design! {
                             text_style: <REGULAR_FONT>{font_size: 12}
                             color: #000
                         }
-                        text: "Something went wrong while loading the model using this port number. Please try another one."
+                        text: "加载端口出错，请切换重试"
                     }
                 }
 
@@ -153,7 +153,7 @@ live_design! {
                         text_style: <BOLD_FONT>{font_size: 16}
                         color: #000
                     }
-                    text: "Client code example"
+                    text: "client端实例"
                 }
 
                 code_snippet = <CodeView> {

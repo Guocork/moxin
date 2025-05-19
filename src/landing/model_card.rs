@@ -151,7 +151,7 @@ live_design! {
                 text_style: <BOLD_FONT>{font_size: 11},
                 color: #000
             }
-            text: "Model Summary"
+            text: "模型总揽"
         }
         model_summary = <Label> {
             width: Fill,
@@ -188,7 +188,7 @@ live_design! {
                 text_style: <BOLD_FONT>{font_size: 11},
                 color: #000
             }
-            text: "Resources"
+            text: "资源"
         }
 
         <View> {
@@ -275,7 +275,7 @@ live_design! {
                         text_style: <BOLD_FONT>{font_size: 9},
                         color: #000
                     }
-                    text: "Model Description"
+                    text: "模型描述"
                 }
                 view_all_model_summary = <Label> {
                     width: Fill,

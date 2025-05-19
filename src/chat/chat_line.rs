@@ -34,12 +34,12 @@ live_design! {
     }
 
     SaveButton = <ChatLineEditButton> {
-        text: "Save"
+        text: "保存"
     }
 
     SaveAndRegerateButton = <ChatLineEditButton> {
         width: 130,
-        text: "Save & Regenerate"
+        text: "保存 & 再生成"
     }
 
     CancelButton = <ChatLineEditButton> {
@@ -51,7 +51,7 @@ live_design! {
                 return #000;
             }
         }
-        text: "Cancel"
+        text: "取消"
     }
 
     MessageText = <Markdown> {

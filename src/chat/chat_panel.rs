@@ -220,7 +220,7 @@ live_design! {
             width: Fill,
             height: Fit,
 
-            empty_message: "Enter a message"
+            empty_message: "请输入...."
             draw_bg: {
                 radius: 30.0
                 color: #fff
@@ -284,7 +284,7 @@ live_design! {
                             text_style: <REGULAR_FONT>{font_size: 12},
                             color: #667085
                         }
-                        text: "You haven’t downloaded any models yet."
+                        text: "未下载模型"
                     }
                     go_to_discover_button = <MolyButton> {
                         width: Fit,
@@ -299,7 +299,7 @@ live_design! {
                         }
 
                         padding: {top: 14, right: 12, bottom: 14, left: 12}
-                        text: "Go To Discover"
+                        text: "去下载模型"
                         draw_text: {
                             text_style: <BOLD_FONT>{font_size: 12},
                             fn get_color(self) -> vec4 {
@@ -346,7 +346,7 @@ live_design! {
                             text_style: <REGULAR_FONT>{font_size: 14},
                             color: #667085
                         }
-                        text: "Start chatting by choosing a model from above"
+                        text: "选择一个模型进行对话"
                     }
                 }
 
@@ -375,7 +375,7 @@ live_design! {
                         text_style: <REGULAR_FONT>{font_size: 14},
                         color: #101828
                     }
-                    text: "How can I help you?"
+                    text: "我能帮你吗"
                 }
             }
 

@@ -56,7 +56,7 @@ live_design! {
                     }
                 }
 
-                text: "Edit Chat Name"
+                text: "编辑名称"
             }
 
 
@@ -86,7 +86,7 @@ live_design! {
                     }
                 }
 
-                text: "Delete Chat"
+                text: "删除聊天"
             }
         }
     }

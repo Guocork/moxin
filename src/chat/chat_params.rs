@@ -51,7 +51,7 @@ live_design! {
                         text_style: <BOLD_FONT>{font_size: 12}
                         color: #667085
                     }
-                    text: "Chat Settings"
+                    text: "聊天设置"
                 }
 
                 <View> {
@@ -65,7 +65,7 @@ live_design! {
                             text_style: <BOLD_FONT>{font_size: 10},
                             color: #000
                         }
-                        text: "System Prompt"
+                        text: "系统提示词"
                         hover_actions_enabled: true
                     }
                     <ChatParamsTextInputWrapper> {
@@ -74,7 +74,7 @@ live_design! {
                             system_prompt = <MolyTextInput> {
                                 width: Fill,
                                 height: Fit,
-                                empty_message: "Enter a system prompt"
+                                empty_message: "请输入......"
                                 draw_bg: {
                                     radius: 0
                                     color: #0000
@@ -93,7 +93,7 @@ live_design! {
                         text_style: <BOLD_FONT>{font_size: 10}
                         color: #667085
                     }
-                    text: "INFERENCE PARAMETERS"
+                    text: "推理参数"
                 }
 
                 <View> {
@@ -102,13 +102,13 @@ live_design! {
 
                     temperature = <MolySlider> {
                         default: 1.0
-                        text: "Temperature"
+                        text: "温度"
                         min: 0.0
                         max: 2.0
                     }
 
                     top_p = <MolySlider> {
-                        text: "Top P"
+                        text: "顶层 P"
                         min: 0.0
                         max: 1.0
                     }
@@ -125,7 +125,7 @@ live_design! {
                                 text_style: <BOLD_FONT>{font_size: 10},
                                 color: #000
                             }
-                            text: "Stream"
+                            text: "流式输出"
                             hover_actions_enabled: true
                         }
                         stream = <MolySwitch> {
@@ -139,7 +139,7 @@ live_design! {
                     }
 
                     max_tokens = <MolySlider> {
-                        text: "Max Tokens"
+                        text: "最大Tokens"
                         min: 100.0
                         max: 2048.0
                         step: 1.0
@@ -157,7 +157,7 @@ live_design! {
                                 text_style: <BOLD_FONT>{font_size: 10},
                                 color: #000
                             }
-                            text: "Stop"
+                            text: "步数"
                             hover_actions_enabled: true
                         }
                         <ChatParamsTextInputWrapper> {
@@ -181,13 +181,13 @@ live_design! {
                     }
 
                     frequency_penalty = <MolySlider> {
-                        text: "Frequency Penalty"
+                        text: "频率密度"
                         min: 0.0
                         max: 1.0
                     }
 
                     presence_penalty = <MolySlider> {
-                        text: "Presence Penalty"
+                        text: "风度密度"
                         min: 0.0
                         max: 1.0
                     }
