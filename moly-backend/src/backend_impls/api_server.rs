@@ -15,11 +15,10 @@ use crate::store::download_files::DownloadedFile;
 
 use super::BackendModel;
 
-// From https://github.com/L-jasmine/LlamaEdge/tree/feat/support_unload_and_exit
-// A repo that fork from LlamaEdge/LlamaEdge for support unload model and exit
+// https://github.com/L-jasmine/LlamaEdge/tree/feat/support_unload_and_exit
 static WASM: &[u8] = include_bytes!("../../wasm/llama-api-server.wasm");
 
-/// Use server which is OpenAI compatible
+/// 使用兼容Openai的服务器
 pub struct LLamaEdgeApiServer {
     id: String,
     listen_addr: SocketAddr,
